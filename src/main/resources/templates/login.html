@@ -1,0 +1,26 @@
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:th="http://www.thymeleaf.org"/>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="#" th:action="@{/login}"  method="post">
+            <table>
+                <tr>
+                    <td><label for="firstName">First Name</label></td>
+                    <td><input th:field="*{email}" type="text" name="email"></input></td>
+                </tr>
+                <tr>
+                    <td><label for="last_name">Last Name</label></td>
+                    <td><input th:field="*{password}" type="text" name="password"></input></td>
+                </tr>
+                <tr>
+                    <td><input type="reset" value="Clear"/></td>
+                    <td><input type="submit" value="Submit"></input></td>
+                </tr>
+            </table>
+    </body>
+</html>
