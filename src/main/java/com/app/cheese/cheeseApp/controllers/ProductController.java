@@ -17,12 +17,14 @@ import com.app.cheese.cheeseApp.repositories.SubCategoryRepository;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -52,9 +54,13 @@ public class ProductController {
         prodRepo.save(product);
         return product;
     }
-    
-    
-    
+   
+   @RequestMapping(value="getProduct",method = RequestMethod.GET)
+   public Optional<Product> getProduct(@RequestParam long id)
+   {
+        Optional<Product> foundProduct = prodRepo.findById(id);
+       return foundProduct;
+   }
     @RequestMapping(value = "/get-all-products", method = RequestMethod.GET)
     public List<Product> getAllProducts()
     {

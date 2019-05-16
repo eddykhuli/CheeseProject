@@ -5,6 +5,7 @@
  */
 package com.app.cheese.cheeseApp.entities;
 
+import com.app.cheese.cheeseApp.domain.VerificationToken;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
@@ -15,6 +16,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -55,9 +57,7 @@ public class User implements UserDetails, Serializable {//class implements sprin
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Role role;
     private boolean enabled;
-    @Column(name="token")
-    private String confirmationToken;
-     
+   
     public User() {
         super();
         this.enabled=false;

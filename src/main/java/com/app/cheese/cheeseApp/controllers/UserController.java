@@ -106,15 +106,15 @@ public class UserController {
             VerificationToken verificationToken = new VerificationToken(user);
 
             confirmationTokenRepository.save(verificationToken);
-//
-//            SimpleMailMessage mailMessage = new SimpleMailMessage();
-//            mailMessage.setTo(user.getEmail());
-//            mailMessage.setSubject("Complete Registration!");
-//            mailMessage.setFrom("eddykthobela@gmail.com");
-//            mailMessage.setText("To confirm your account, please click here : "
-//            +"http://localhost:8888/confirm-account?token="+verificationToken.getVerificationToken());
-//
-//            emailSenderService.sendEmail(mailMessage);
+
+            SimpleMailMessage mailMessage = new SimpleMailMessage();
+            mailMessage.setTo(user.getEmail());
+            mailMessage.setSubject("Complete Registration!");
+            mailMessage.setFrom("eddykthobela@gmail.com");
+            mailMessage.setText("To confirm your account, please click here : "
+            +"http://localhost:8888/confirm-account?token="+verificationToken.getVerificationToken());
+
+            emailSenderService.sendEmail(mailMessage);
 //            
             message = "successfulRegisteration";
 
@@ -141,7 +141,7 @@ public class UserController {
         return message;
     }
 
-    @RequestMapping(value = "/validateLogin", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public User validateLogin(@RequestParam String email) {
         User foundUser = userRepository.findByEmail(email);
 
@@ -149,9 +149,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/getUser", method = RequestMethod.GET)
-    public Principal getUser(Principal user) {
+    public String getUser(Principal user) {
        
-        return user;
+        return user.getName();
     }
 
     @RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
